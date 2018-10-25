@@ -1,0 +1,68 @@
+//This Code describes the movement of the player, and its access to the rest of the game.
+/// @description Insert description here
+// You can write your code in this editor
+hp = 10;
+/*if (hp = 7)
+{
+	instance_destroy();
+	image_angle = point_direction(x, y, mouse_x, mouse_y);
+	instance_create_layer(obj_player.x, obj_player.y, "Instances", obj_player75);
+}*/
+	
+
+if(mouse_check_button(mb_right)) && (cooldown < 1){
+		speed = 0
+		cooldown = 0;
+		cooldown = cooldown - 1;
+	}	
+	if(keyboard_check(ord("D"))) x += 4;
+	if(keyboard_check(ord("A"))) x -= 4;
+	if(keyboard_check(ord("W"))) y -= 4;
+	if(keyboard_check(ord("S"))) y += 4;
+
+
+
+if(keyboard_check(vk_space)) && (cooldown < 1) 
+{
+	if(instance_exists(obj_player))
+	{
+		speed = 15;
+		move_towards_point(mouse_x, mouse_y, speed);
+		image_angle = point_direction(x, y, mouse_x, mouse_y);
+	}
+	cooldown = 10;
+	cooldown= cooldown-1;	
+	
+}else{
+	if(mouse_check_button(mb_right)) && (cooldown < 1){
+		speed = 0
+		cooldown = 0;
+		cooldown = cooldown - 1;
+	}	
+	if(keyboard_check(ord("D"))) x += 4;
+	if(keyboard_check(ord("A"))) x -= 4;
+	if(keyboard_check(ord("W"))) y -= 4;
+	if(keyboard_check(ord("S"))) y += 4;
+}
+cooldown = cooldown - 2;
+
+image_angle = point_direction(x, y, mouse_x, mouse_y);
+
+if(mouse_check_button(mb_left)) && (cooldown <1)
+{
+	instance_create_layer(x, y, "Laser_layer", obj_laser);
+	cooldown = 5;
+}
+cooldown = cooldown - 1;
+/*if(keyboard_check(vk_space)) && (cooldown <1)
+{
+	if(keyboard_check(ord("D"))) x += 100;
+	if(keyboard_check(ord("A"))) x -= 100;
+	if(keyboard_check(ord("W"))) y -= 100;	
+	if(keyboard_check(ord("S"))) y += 100;
+	cooldown = 60;
+}
+cooldown = cooldown - 1;
+*/
+x = clamp(x, 0, room_width-sprite_width);
+y = clamp(y, 0, room_height-sprite_height);
